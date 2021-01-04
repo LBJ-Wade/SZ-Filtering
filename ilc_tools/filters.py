@@ -10,6 +10,24 @@ from ilc_tools import data_tools
 import nifty5 as ift 
 
 def radialprofile_cmb(data, rmax=100, nbins=20):
+	''' Compute the radial profile of nc, number of clusters centered on a map
+	
+	Parameters:
+	-----------
+		data: fits file
+				3D array, with first dim belonging to number of files
+		rmax: int
+				maximum radius of pixels. Default is 100
+		nbins: int
+				number of bins to consider for profile. Default is 20
+				
+	Returns:
+	--------
+		rad_profile: float
+						2D array with radial profile of cluster for nc number of clusters
+		error:	float
+					1D array with the standard deviation 
+	'''
     
     npix = data.shape[1]
     center = (npix/2,npix/2)
@@ -35,6 +53,22 @@ def radialprofile_cmb(data, rmax=100, nbins=20):
     return rad_profile, error
     
 def radialprofile_ksz(data, rmax=100, nbins=20):
+	''' Compute the radial profile of a given of cluster centered on a map
+	
+	Parameters:
+	-----------
+		data: fits file
+				2D array with dimensions corrresponding to number of pixels in the map
+		rmax: int
+				maximum radius of pixels. Default is 100
+		nbins: int
+				number of bins to consider for profile. Default is 20
+				
+	Returns:
+	--------
+		rad_profile: float
+						2D array with radial profile of cluster
+	'''
     
     npix = data.shape[1]
     center = (npix/2,npix/2)
